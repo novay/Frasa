@@ -23,7 +23,7 @@ print(censored_text)
 ```
 
 #### Plagiasi
-```
+``` 
 from frasa.deteksi import plagiat
 
 text_1 = "Dasar anj!ng kamu b4j1nGan."

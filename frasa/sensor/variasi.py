@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
 class Variasi:
-    """Represents a string with varying character representations."""
+    """
+        Represents a string with varying character representations.
+    """
     def __init__(self, string, char_map={}):
         """
         Args:

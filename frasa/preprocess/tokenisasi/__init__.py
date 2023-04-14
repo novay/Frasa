@@ -5,7 +5,6 @@
 # URL: <https://frasa.id/>
 # For license information, see LICENSE.TXT
 
-# Tokenization of words
 def token_kata(text, preserve_line=False):
     """
     Return a tokenized copy of *text*,

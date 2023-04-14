@@ -1,28 +1,28 @@
-from frasa.sensor import sensor
+# from frasa import sensor
 
-text = "Dasar anj!ng kamu b4j1nGan."
-censored_text = sensor.beep(text)
-print(censored_text)
+# text = "Dasar anj!ng kamu b4j1nGan."
+# censored_text = sensor.beep(text)
+# print(censored_text)
 
+# Dasar **** kamu ****.
 
+#######################################
 
+from frasa import deteksi
 
+print(deteksi.gender('Riski').get_nama())
+print(deteksi.gender('Riski').get_gender())
+print(deteksi.gender('Riski').get_prob())
+print(deteksi.gender('Riski').json())
 
+# Riski
+# Laki-Laki
+# {'L': 88.12, 'P': 11.88}
+# {"nama": "Riski", "gender": "Laki-Laki", "probabilitas": {"L": 88.12, "P": 11.88}}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# from frasa import pre 
+# pre
+# pre.lower()
 
 
 

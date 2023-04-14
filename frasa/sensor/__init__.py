@@ -1,3 +1,3 @@
-from .sensor import Sensor
+from .sensor import sensor
 
-sensor = Sensor()
+sensor = sensor()

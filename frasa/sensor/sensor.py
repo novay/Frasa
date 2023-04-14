@@ -2,15 +2,10 @@
 from collections.abc import Iterable
 
 from .constants import ALLOWED_CHARACTERS
-from .utils import (
-    cek_kata_sambung,
-    file_direktori,
-    kata_ganti,
-    baca_badword,
-)
+from .utils import cek_kata_sambung, file_direktori, kata_ganti, baca_badword
 from .variasi import Variasi
 
-class Sensor:
+class sensor:
     def __init__(self, words=None):
         """
         Args:
@@ -42,7 +37,7 @@ class Sensor:
         self.MAX_NUMBER_COMBINATIONS = 1
         self.ALLOWED_CHARACTERS = ALLOWED_CHARACTERS
         self._default_wordlist_filename = file_direktori(
-            "data/badword.txt"
+            "data/sensor-kata.csv"
         )
         if type(words) == str:
             self.badword_from_file(words)
@@ -68,7 +63,7 @@ class Sensor:
 
     def badword(self, custom_words=None, **kwargs):
         """Generate a set of words that need to be censored."""
-        # Replace the words from `data/badword.txt` with a custom list
+        # Replace the words from `data/sensor-kata.csv` with a custom list
         custom_words = custom_words or baca_badword(self._default_wordlist_filename)
         self._populate_words_to_wordset(custom_words, **kwargs)
 

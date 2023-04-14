@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 from codecs import open
 from os import path
@@ -10,7 +10,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     
 setup(
     name="frasa",
-    version="0.0.1",
+    version="0.0.8",
     description="Koleksi NLP Pribadi untuk Bahasa Indonesia.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -29,6 +29,7 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Operating System :: OS Independent"
     ],
-    packages=["frasa"],
-    install_requires=["requests"]
+    packages=find_packages(), 
+    package_data={'frasa': ['deteksi/gender/data/*']},
+    install_requires=["nltk"]
 )

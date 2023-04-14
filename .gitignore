@@ -1,10 +1,12 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,intellij+all,git,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,intellij+all,git,visualstudiocode
 
-build 
-dist 
+build
+dist
 venv
 make.ipynb
+frasa.egg-info
+example.py
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:

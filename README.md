@@ -15,3 +15,7 @@ You can find installation instructions and detailed instructions on how to use t
 ### Whatelse ?
 
 Soon. Drafting.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

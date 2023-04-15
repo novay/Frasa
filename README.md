@@ -1,13 +1,17 @@
 # Frasa's NLP Services
 Frasa is a collection of modules which provides various functions for Natural Language Processing for Bahasa Indonesia. This repository contains all source code related to NLP services.
 
-### Instalasi
-Untuk menggunakan `Frasa`, jalankan perintah berikut:
+### Installation
+To use this `Frasa`, just install it as usually you did:
 
 ```
 pip install frasa
 ```
 
-### Cara Pemakaian
+### Documentation
 
-COMMING SOON
+You can find installation instructions and detailed instructions on how to use this package at [the dedicated documentation site](https://frasa.btekno.id/).
+
+### Whatelse ?
+
+Soon. Drafting.

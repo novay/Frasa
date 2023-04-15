@@ -13,8 +13,10 @@ Kunjungi http://frasa.id untuk informasi selengkapnya.
 import os
 
 __name__ = "frasa"
-__version__ = "0.0.8"
+__version__ = "0.0.9"
 __license__ = 'MIT'
 __author__ = 'Novianto Rahmadi'
 
 PACKAGE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+from .base import *

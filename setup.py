@@ -10,7 +10,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     
 setup(
     name="frasa",
-    version="0.0.8",
+    version="0.0.9",
     description="Koleksi NLP Pribadi untuk Bahasa Indonesia.",
     long_description=long_description,
     long_description_content_type="text/markdown",

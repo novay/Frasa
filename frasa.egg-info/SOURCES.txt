@@ -2,6 +2,7 @@ LICENSE
 README.md
 setup.py
 frasa/__init__.py
+frasa/base.py
 frasa.egg-info/PKG-INFO
 frasa.egg-info/SOURCES.txt
 frasa.egg-info/dependency_links.txt
@@ -22,9 +23,17 @@ frasa/deteksi/gender/classify.py
 frasa/deteksi/gender/utils.py
 frasa/deteksi/gender/data/__init__.py
 frasa/deteksi/gender/data/frasa-gender.pickle
+frasa/deteksi/gender/data/frasa-gender.pkl
 frasa/deteksi/gender/data/nama-gender-combined.csv
+frasa/deteksi/gender/data/nama.csv
 frasa/deteksi/plagiat/__init__.py
 frasa/deteksi/plagiat/plagiat.py
+frasa/scrap/__init__.py
+frasa/scrap/cnn.py
+frasa/scrap/detiknews.py
+frasa/scrap/liputan6.py
+frasa/scrap/tribun.py
+frasa/scrap/viva.py
 frasa/sensor/__init__.py
 frasa/sensor/constants.py
 frasa/sensor/sensor.py

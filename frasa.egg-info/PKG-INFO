@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: frasa
-Version: 0.0.9
+Version: 0.1.52
 Summary: Koleksi NLP Pribadi untuk Bahasa Indonesia.
-Home-page: https://github.com/novay/python/tree/main/frasa
+Home-page: https://github.com/novay/frasa
 Author: Novianto Rahmadi
 Author-email: novay@btekno.id
 License: MIT
@@ -21,13 +21,21 @@ License-File: LICENSE
 # Frasa's NLP Services
 Frasa is a collection of modules which provides various functions for Natural Language Processing for Bahasa Indonesia. This repository contains all source code related to NLP services.
 
-### Instalasi
-Untuk menggunakan `Frasa`, jalankan perintah berikut:
+## Installation
+To use this `Frasa`, just install it as usually you did:
 
 ```
 pip install frasa
 ```
 
-### Cara Pemakaian
+## Documentation
 
-COMMING SOON
+You can find installation instructions and detailed instructions on how to use this package at [the dedicated documentation site](https://frasa.btekno.id/).
+
+## Whatelse ?
+
+Soon. Drafting.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

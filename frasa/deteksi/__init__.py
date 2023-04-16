@@ -16,23 +16,20 @@ Modul untuk melakukan deteksi pada beberapa hal seperti
 - Prediksi Tingkat Kesamaan dari beberapa dokumen
 """
 
-from frasa.deteksi.gender import model_gender, probabilitas
-import json
+# from frasa.deteksi.gender import model_gender, probabilitas
+# from frasa.deteksi.plagiat.plagiat import Periksa
+# import json
 
-class gender:
-    def __init__(self, nama):
-        self.nama = nama
-        self.gender = model_gender().classify(nama)
-        self.prob = probabilitas(nama)
-    
-    def json(self):
-        return json.dumps({'nama': self.nama, 'gender': self.gender, 'probabilitas': self.prob})
-    
-    def get_nama(self):
-        return self.nama
-    
-    def get_gender(self):
-        return self.gender
-    
-    def get_prob(self):
-        return self.prob
+# class Periksa:
+#     def __init__(self, text_1, text_2):
+#         self.text_1 = text_1
+#         self.text_2 = text_2
+        
+
+
+from .gender.gender import Gender
+from .plagiat.plagiat import Plagiat
+
+if __name__ != '__main__':
+    gender = Gender()
+    plagiat = Plagiat()

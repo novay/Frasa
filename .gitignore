@@ -3,11 +3,15 @@
 
 build
 dist
-venv
-make.ipynb
+/venv/
 frasa.egg-info
 example.py
-__pycache__
+__pycache__/
+*.pkl
+*.pickle
+*.DS_Store
+*.ipynb
+tests/
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:

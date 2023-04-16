@@ -1,32 +1,55 @@
 import numpy as np
 import urllib.request
 
-import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 
-# if not nltk.data.find('tokenizers/punkt'):
-# nltk.download(['stopwords', 'punkt'])
+from .rabin_karp import rabin_karp
+from .jaccard import jaccard
+from .cosine import cosine
 
-from .metode.rabin_karp import rabin_karp
-from .metode.jaccard import jaccard
-from .metode.cosine import cosine
-
-class periksa:
-  def __init__(self, dokumen_a, dokumen_b, text=False, bahasa='indonesian', url=False, method='Rabin Karp'):
-    self.dokumen_a = dokumen_a
-    self.dokumen_b = dokumen_b
-    self.text = text
+class Plagiat:
+  def __init__(self, format='Text', bahasa='indonesian'):
+    self.dokumen_a = None
+    self.dokumen_b = None
+    self.format = format
     self.bahasa = bahasa
-    self.url = url
-    self.method = method
-    self.hashing = {"a": [], "b": []}
     self.n_gram = 5
-    self.content_1 = self.baca_konten(self.dokumen_a)
-    self.content_2 = self.baca_konten(self.dokumen_b)
-    self.hitung_hash(self.content_1, "a")
-    self.hitung_hash(self.content_2, "b")
+    self.hashing = {"a": [], "b": []}
+  
+  def cosine(self, dokumen_a, dokumen_b, format='Text', bahasa='indonesian'):
+    self.format = format
+    self.bahasa = bahasa
+    
+    set_1 = self.preprocessing(self.baca_konten(dokumen_a))
+    set_2 = self.preprocessing(self.baca_konten(dokumen_b))
+    
+    return cosine.calculate(set_1, set_2)
+  
+  def jaccard(self, dokumen_a, dokumen_b, format='Text', bahasa='indonesian'):
+    self.format = format
+    self.bahasa = bahasa
+    
+    set_1 = self.preprocessing(self.baca_konten(dokumen_a))
+    set_2 = self.preprocessing(self.baca_konten(dokumen_b))
+    
+    return jaccard.calculate(set_1, set_2)
+    
+        
+# def __init__(self, dokumen_a, dokumen_b, text=False, bahasa='indonesian', url=False, method='Rabin Karp'):
+#     self.dokumen_a = dokumen_a
+#     self.dokumen_b = dokumen_b
+#     self.text = text
+#     self.bahasa = bahasa
+#     self.url = url
+#     self.method = method
+#     self.hashing = {"a": [], "b": []}
+#     
+#     self.content_1 = self.baca_konten(self.dokumen_a)
+#     self.content_2 = self.baca_konten(self.dokumen_b)
+#     self.hitung_hash(self.content_1, "a")
+#     self.hitung_hash(self.content_2, "b")
   
   """ 
     Menghitung tingkat plagiarisme menggunakan Rumus Plagiarisme Rate
@@ -40,27 +63,23 @@ class periksa:
     :return (float) nilai persentase tingkat plagiarisme
     :type   p: float
   """
-  def hitung(self):
-    if self.method == 'Rabin Karp':
-      th_a = len(self.hashing["a"])
-      th_b = len(self.hashing["b"])
-      a = self.hashing["a"]
-      b = self.hashing["b"]
-      sh = len(np.intersect1d(a, b))
+  def rabin_karp(self, dokumen_a, dokumen_b, format='Text', bahasa='indonesian'):
+    
+    self.content_1 = self.baca_konten(dokumen_a)
+    self.content_2 = self.baca_konten(dokumen_b)
+    
+    self.hitung_hash(self.content_1, "a")
+    self.hitung_hash(self.content_2, "b")
+    
+    th_a = len(self.hashing["a"])
+    th_b = len(self.hashing["b"])
+    a = self.hashing["a"]
+    b = self.hashing["b"]
+    sh = len(np.intersect1d(a, b))
 
-      p = (float(2 * sh)/(th_a + th_b)) * 100
-      return p
-    
-    elif self.method == 'Jaccard':
-      set_1 = self.preprocessing(self.content_1)
-      set_2 = self.preprocessing(self.content_2)
-      return jaccard(set_1, set_2).calculate_similarity()
-    
-    elif self.method == 'Cosine':
-      set_1 = self.preprocessing(self.content_1)
-      set_2 = self.preprocessing(self.content_2)
-      return cosine(set_1, set_2).calculate_similarity()
-      
+    p = (float(2 * sh)/(th_a + th_b)) * 100
+    return p
+
   """ 
     Menghitung nilai hash dari konten dokumen dan menambahkannya ke tabel hash tipe dokumen
 
@@ -76,13 +95,12 @@ class periksa:
   def hitung_hash(self, content, doc_type):
     text = self.preprocessing(content)
     text = "".join(text)
-    
-    if self.method == 'Rabin Karp':
-      text = rabin_karp(text, self.n_gram)
-      for _ in range(len(content) - self.n_gram + 1):
-        self.hashing[doc_type].append(text.hash)
-        if text.next_window() == False:
-          break
+
+    text = rabin_karp(text, self.n_gram)
+    for _ in range(len(content) - self.n_gram + 1):
+      self.hashing[doc_type].append(text.hash)
+      if text.next_window() == False:
+        break
   
   """ 
     Baca teks dalam dokumen, dengan kondisi
@@ -94,12 +112,12 @@ class periksa:
     :type   mixed: string
   """
   def baca_konten(self, file):
-    if self.url:
+    if self.format == 'Text':
+      return file
+    elif self.format == 'URL':
       response = urllib.request.urlopen(file)
       return response.read().decode('utf-8')
-    elif self.text:
-      return file
-    else:
+    elif self.format == 'File':
       file = open(file, 'r+', encoding="utf-8")
       return file.read()
     

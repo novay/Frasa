@@ -1,3 +1,4 @@
-from .sensor import sensor
+from .sensor import Sensor
 
-sensor = sensor()
+if __name__ != '__main__':
+    sensor = Sensor()

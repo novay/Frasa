@@ -3,7 +3,6 @@ from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
 from frasa.base import slugify
 import re, datetime
-import json
 
 class Detiknews:
     '''

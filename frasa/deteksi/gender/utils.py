@@ -1,7 +1,6 @@
 import csv
 import os
-
-file_csv = 'data/nama-gender-combined.csv'
+from frasa import DATASET_DIR
 
 def get_nama():
     list_nama = read_csv()
@@ -21,11 +20,10 @@ def get_nama():
     return nama
 
 def read_csv():
-    path = os.path.abspath(__file__)
-    dir_path = os.path.dirname(path) + '/'
-
     nama = dict()
-    with open(dir_path + '/' + file_csv, 'r') as csv_file:
+    file_csv = DATASET_DIR + '/deteksi/nama-gender-combined.csv'
+    
+    with open(file_csv, 'r') as csv_file:
         reader = csv.DictReader(csv_file, delimiter=',')
         for row in reader:
             nama[row['nama']] = [int(row['m']), int(row['f'])]

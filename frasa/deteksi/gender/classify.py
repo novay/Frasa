@@ -83,3 +83,6 @@ class NBClassifier:
         prob_cewek = self.classifier.prob_classify(feats).prob('Perempuan')
         
         return {'L': round(prob_cowok * 100, 2), 'P': round(prob_cewek * 100, 2)}
+
+if __name__ != '__main__':
+    NaiveBayes = NBClassifier()

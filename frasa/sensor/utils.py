@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os.path
+from frasa import DATASET_DIR
 
 def file_direktori(nama_file):
     """
@@ -11,7 +12,7 @@ def file_direktori(nama_file):
     Returns:
         string: Nama direktorinya
     """
-    root = os.path.abspath(os.path.dirname(__file__))
+    root = DATASET_DIR + '/sensor/'
     return os.path.join(root, nama_file)
 
 def baca_badword(nama_file: str):

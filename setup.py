@@ -10,11 +10,11 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     
 setup(
     name="frasa",
-    version="0.0.9",
+    version="0.1.52",
     description="Koleksi NLP Pribadi untuk Bahasa Indonesia.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/novay/python/tree/main/frasa",
+    url="https://github.com/novay/frasa",
     author="Novianto Rahmadi",
     author_email="novay@btekno.id",
     license="MIT",
@@ -30,6 +30,15 @@ setup(
         "Operating System :: OS Independent"
     ],
     packages=find_packages(), 
-    package_data={'frasa': ['deteksi/gender/data/*']},
-    install_requires=["nltk"]
+    package_data={'frasa': [
+        'datasets/models/frasa-gender.pickle', 
+        'datasets/corpus/sensor/alphabetic_unicode.json', 
+        'datasets/corpus/sensor/sensor-kata.csv', 
+        'datasets/corpus/sensor/sensor-aturan.csv', 
+        'datasets/corpus/sensor/sensor-pengganti.csv', 
+        'datasets/corpus/indonesia/stopword.txt', 
+        'datasets/corpus/indonesia/lemma/clitics.txt', 
+        'datasets/corpus/indonesia/lemma/dict.json', 
+        'datasets/corpus/indonesia/lemma/root.txt'
+    ]}
 )

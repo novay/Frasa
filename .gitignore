@@ -12,6 +12,7 @@ __pycache__/
 *.DS_Store
 *.ipynb
 tests/
+experiments/
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:

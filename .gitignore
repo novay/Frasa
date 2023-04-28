@@ -13,6 +13,8 @@ __pycache__/
 *.ipynb
 tests/
 experiments/
+frasa/datasets/corpus/deteksi/nama.csv
+corpora/
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:

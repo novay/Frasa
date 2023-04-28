@@ -1,6 +1,7 @@
 from .utils import get_nama
 from nltk import NaiveBayesClassifier, classify
 import random
+from frasa import DATASET_DIR
 
 class NBClassifier:
     def get_features(self):
@@ -73,7 +74,11 @@ class NBClassifier:
             'last_letter': name[-1],
             'last_two': name[-2:],
             'last_three': name[-3:],
-            'last_is_vowel': (name[-1] in 'AEIOUY')
+            'last_four': name[-4:],
+            'last_five': name[-5:],
+            'first_letter': name[0],
+            # 'last_is_vowel': (name[-1] in 'AEIOU'), 
+            # 'is_male_name': (name[-1] in self.load_male_names)
         }
         
     def get_probability(self, name):
@@ -84,5 +89,10 @@ class NBClassifier:
         
         return {'L': round(prob_cowok * 100, 2), 'P': round(prob_cewek * 100, 2)}
 
+    def load_male_names(self, file_path):
+        with open(file_path, 'r') as f:
+            names = f.read().splitlines()
+        return names
+    
 if __name__ != '__main__':
     NaiveBayes = NBClassifier()
